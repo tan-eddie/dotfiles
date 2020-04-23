@@ -1,0 +1,18 @@
+# Some useful things for Android development.
+
+PATH=$PATH:~/Library/Android/sdk/platform-tools/
+export ANDROID_HOME=~/Library/Android/sdk/
+
+# Take a screenshot.
+adb-screenshot() {
+    adb shell screencap -p /sdcard/screen.png
+    adb pull /sdcard/screen.png $1
+    adb shell rm /sdcard/screen.png
+}
+
+# Set animator scale.
+adb-animations() {
+    adb shell settings put global animator_duration_scale $1
+    adb shell settings put global transition_animation_scale $1
+    adb shell settings put global window_animation_scale $1
+}

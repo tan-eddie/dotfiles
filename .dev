@@ -1,0 +1,9 @@
+# Useful stuff for general dev work.
+
+# JSON pretty print.
+alias json='python -m json.tool'
+
+# Tickets since commit (non-inclusive). Only works on Jira ticket naming scheme (ZZZ-123).
+tsc() {
+    git log --oneline --no-merges $1..HEAD | egrep -o "[a-zA-Z]+-\d+" | sort | uniq
+}
